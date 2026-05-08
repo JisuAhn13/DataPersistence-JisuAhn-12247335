@@ -49,11 +49,13 @@ void ConsoleView::printUsers() const {
 void ConsoleView::printFooter() const {
     std::cout << "=====================================\n";
     std::cout << "Commands:\n";
-    std::cout << "  add                 - Create new user\n";
-    std::cout << "  list                - Read all users\n";
-    std::cout << "  search <id|name>    - Read by ID or name\n";
-    std::cout << "  update <id>         - Update a user field\n";
-    std::cout << "  remove <id>         - Delete a user\n";
+    std::cout << "  add                 - [C] Create new user\n";
+    std::cout << "  list                - [R] Read all users\n";
+    std::cout << "  search <id|name>    - [R] Read by ID or name\n";
+    std::cout << "  update <id>         - [U] Update a user field\n";
+    std::cout << "  remove <id>         - [D] Delete a user\n";
+    std::cout << "  save                - Save current data to file\n";
+    std::cout << "  load                - Reload data from file\n";
     std::cout << "  quit                - Exit\n";
     std::cout << "> ";
 }

@@ -19,6 +19,9 @@ public:
     const std::vector<User>& getUsers() const;
     int getNextId() const;
 
+    void save();
+    void reload();
+
 private:
     IRepository<User>& repo_;
     std::vector<User>  users_;

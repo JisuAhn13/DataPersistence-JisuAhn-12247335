@@ -59,4 +59,13 @@ std::vector<User> UserModel::findByName(const std::string& query) const {
 const std::vector<User>& UserModel::getUsers() const { return users_; }
 int UserModel::getNextId() const { return nextId_; }
 
+void UserModel::save() {
+    persist();
+}
+
+void UserModel::reload() {
+    users_ = repo_.load(nextId_);
+    notifyObservers();
+}
+
 void UserModel::persist() { repo_.save(users_, nextId_); }

@@ -32,6 +32,8 @@ void AppController::handleCommand(const std::string& command) {
     else if (cmd == "search") cmdSearch(args);
     else if (cmd == "update") cmdUpdate(args);
     else if (cmd == "remove") cmdRemove(args);
+    else if (cmd == "save")   cmdSave();
+    else if (cmd == "load")   cmdLoad();
     else if (cmd == "quit")   cmdQuit();
     else {
         view_.showMessage("Unknown command: " + cmd);
@@ -39,7 +41,7 @@ void AppController::handleCommand(const std::string& command) {
     }
 }
 
-// ── Create ──────────────────────────────────────────────────────────────────
+// --- Create ---
 void AppController::cmdAdd() {
     std::string name  = view_.getUserInput("  Name  : ");
     std::string email = view_.getUserInput("  Email : ");
@@ -51,12 +53,12 @@ void AppController::cmdAdd() {
     model_.addUser(name, email);
 }
 
-// ── Read (all) ───────────────────────────────────────────────────────────────
+// --- Read (all) ---
 void AppController::cmdList() {
     view_.render();
 }
 
-// ── Read (search) ────────────────────────────────────────────────────────────
+// --- Read (search) ---
 void AppController::cmdSearch(const std::string& args) {
     if (args.empty()) {
         view_.showMessage("Usage: search <id or name>");
@@ -91,7 +93,7 @@ void AppController::cmdSearch(const std::string& args) {
     view_.render();
 }
 
-// ── Update ───────────────────────────────────────────────────────────────────
+// --- Update ---
 void AppController::cmdUpdate(const std::string& args) {
     if (args.empty()) {
         view_.showMessage("Usage: update <id>");
@@ -128,7 +130,7 @@ void AppController::cmdUpdate(const std::string& args) {
     view_.render();
 }
 
-// ── Delete ───────────────────────────────────────────────────────────────────
+// --- Delete ---
 void AppController::cmdRemove(const std::string& args) {
     if (args.empty()) {
         view_.showMessage("Usage: remove <id>");
@@ -143,7 +145,22 @@ void AppController::cmdRemove(const std::string& args) {
     view_.render();
 }
 
-// ── Quit ─────────────────────────────────────────────────────────────────────
+// --- Save ---
+void AppController::cmdSave() {
+    model_.save();
+    view_.showMessage("Data saved to file. ("
+        + std::to_string(model_.getUsers().size()) + " records)");
+    view_.render();
+}
+
+// --- Load ---
+void AppController::cmdLoad() {
+    model_.reload();
+    view_.showMessage("Data loaded from file. ("
+        + std::to_string(model_.getUsers().size()) + " records)");
+}
+
+// --- Quit ---
 void AppController::cmdQuit() {
     view_.showMessage("Goodbye.");
     running_ = false;

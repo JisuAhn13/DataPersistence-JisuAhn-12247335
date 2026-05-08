@@ -21,5 +21,7 @@ private:
     void cmdSearch(const std::string& args);
     void cmdUpdate(const std::string& args);
     void cmdRemove(const std::string& args);
+    void cmdSave();
+    void cmdLoad();
     void cmdQuit();
 };
