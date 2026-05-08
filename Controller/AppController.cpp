@@ -1,6 +1,7 @@
 #include "AppController.h"
 #include <algorithm>
 #include <cctype>
+#include <iostream>
 #include <sstream>
 
 AppController::AppController(UserModel& model, IView& view)
