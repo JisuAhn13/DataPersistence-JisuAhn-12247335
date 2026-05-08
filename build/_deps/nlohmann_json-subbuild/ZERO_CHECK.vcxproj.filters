@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\reviewer\verify\DataPersistence-JisuAhn-12247335\build\_deps\nlohmann_json-subbuild\CMakeFiles\9412bacb4ec3ab3bcced2581ac8a88d5\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{09397237-94BA-33D4-9B44-E9D33063F7FF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
