@@ -100,7 +100,13 @@ void AppController::cmdUpdate(const std::string& args) {
         view_.render();
         return;
     }
-    int id = std::stoi(args);
+    int id;
+    try { id = std::stoi(args); }
+    catch (...) {
+        view_.showMessage("Invalid ID: " + args);
+        view_.render();
+        return;
+    }
     auto user = model_.findById(id);
     if (!user) {
         view_.showMessage("User " + std::to_string(id) + " not found.");
@@ -137,7 +143,13 @@ void AppController::cmdRemove(const std::string& args) {
         view_.render();
         return;
     }
-    int id = std::stoi(args);
+    int id;
+    try { id = std::stoi(args); }
+    catch (...) {
+        view_.showMessage("Invalid ID: " + args);
+        view_.render();
+        return;
+    }
     if (model_.removeUser(id))
         view_.showMessage("User " + std::to_string(id) + " removed.");
     else

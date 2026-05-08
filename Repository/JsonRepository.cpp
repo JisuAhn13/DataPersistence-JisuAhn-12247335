@@ -15,7 +15,11 @@ void JsonRepository::save(const std::vector<User>& users, int nextId) {
         j["users"].push_back({{"id", u.id}, {"name", u.name}, {"email", u.email}});
     }
     std::ofstream ofs(filePath_);
-    if (ofs) ofs << j.dump(2);
+    if (!ofs) {
+        std::cerr << "[ERROR] Cannot open file for writing: " << filePath_ << "\n";
+        return;
+    }
+    ofs << j.dump(2);
 }
 
 std::vector<User> JsonRepository::load(int& nextId) {
